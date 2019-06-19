@@ -25,17 +25,17 @@ public class CoffeeShopItemManagementApplication {
 		return args -> {
 			repository.deleteAll();
 
-			Flux<Product> productFlux = Flux.just(new Product(null, "Iphone XS", new BigDecimal(550.78)),
-					new Product(null, "Iphone XR", new BigDecimal(760.78)),
-					new Product(null, "Iphone X", new BigDecimal(620.78)),
-					new Product(null, "Iphone 8", new BigDecimal(520.78)),
-					new Product(null, "Google Pixel 2", new BigDecimal(320.78)),
-					new Product(null, "Google Pixel 2xl", new BigDecimal(540.78)),
-					new Product(null, "Google Pixel 3", new BigDecimal(626.78)),
-					new Product(null, "Google Pixel 3xl", new BigDecimal(820.78)),
-					new Product(null, "OnePlus 6t", new BigDecimal(430.78)),
-					new Product(null, "OnePlus 7", new BigDecimal(458.78)),
-					new Product(null, "OnePlus 7pro", new BigDecimal(789.78))
+			Flux<Product> productFlux = Flux.just(new Product(null, "Iphone XS", BigDecimal.valueOf(550.78)),
+					new Product(null, "Iphone XR", BigDecimal.valueOf(760.78)),
+					new Product(null, "Iphone X", BigDecimal.valueOf(620.78)),
+					new Product(null, "Iphone 8", BigDecimal.valueOf(520.78)),
+					new Product(null, "Google Pixel 2", BigDecimal.valueOf(320.78)),
+					new Product(null, "Google Pixel 2xl", BigDecimal.valueOf(540.78)),
+					new Product(null, "Google Pixel 3", BigDecimal.valueOf(626.78)),
+					new Product(null, "Google Pixel 3xl", BigDecimal.valueOf(820.78)),
+					new Product(null, "OnePlus 6t", BigDecimal.valueOf(430.78)),
+					new Product(null, "OnePlus 7", BigDecimal.valueOf(458.78)),
+					new Product(null, "OnePlus 7pro", BigDecimal.valueOf(789.78))
 			).flatMap(repository :: save);
 
 			productFlux.thenMany(repository.findAll())
@@ -48,10 +48,10 @@ public class CoffeeShopItemManagementApplication {
 	public ApplicationRunner initOnceAgain(ReactiveMongoOperations operations, ProductRepository repository) {
 		return args -> {
 
-			Flux<Product> productFlux = Flux.just(new Product(null, "Iphone XS", new BigDecimal(550.78)),
-					new Product(null, "Iphone XR", new BigDecimal(760.78)),
-					new Product(null, "Iphone X", new BigDecimal(620.78)),
-					new Product(null, "Iphone 8", new BigDecimal(520.78))
+			Flux<Product> productFlux = Flux.just(new Product(null, "Iphone XS", BigDecimal.valueOf(550.78)),
+					new Product(null, "Iphone XR", BigDecimal.valueOf(760.78)),
+					new Product(null, "Iphone X", BigDecimal.valueOf(620.78)),
+					new Product(null, "Iphone 8", BigDecimal.valueOf(520.78))
 			).flatMap(repository :: save);
 
 			operations.collectionExists(Product.class)
